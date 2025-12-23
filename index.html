@@ -10,6 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      // Shim process.env for the browser to prevent crashes if API_KEY is not yet injected
+      window.process = window.process || { env: { API_KEY: '' } };
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -92,5 +96,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- The missing piece that makes the app load -->
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
