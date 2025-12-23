@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Offer Letter Builder | Digital Maven</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        /* Essential A4 Dimensions for Preview */
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 20px auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            padding: 15mm 20mm 30mm 20mm;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        /* Force exact sizing for PDF conversion */
+        .capturing .a4-page {
+            margin: 0 !important;
+            box-shadow: none !important;
+            height: 296mm !important; /* Slightly under 297 to prevent ghost pages */
+            page-break-after: always;
+        }
+        
+        .capturing #capture-root {
+            background: white !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 210mm !important;
+        }
+
+        /* Page break for PDF engine */
+        .page-break {
+            page-break-after: always;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; margin: 0; }
+            .a4-page { 
+                margin: 0 !important; 
+                box-shadow: none !important; 
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
